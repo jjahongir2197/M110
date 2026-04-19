@@ -1,0 +1,22 @@
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+@app.route("/musbat", methods=["GET", "POST"])
+def musbat():
+    if request.method == "POST":
+        number = int(request.form["number"])
+
+        if number > 0:
+            msg = "Musbat son"
+        elif number < 0:
+            msg = "Manfiy son"
+        else:
+            msg = "Bu nol"
+
+        return render_template("result12.html", msg=msg)
+
+    return render_template("index12.html")
+
+if __name__ == "__main__":
+    app.run(debug=True)
